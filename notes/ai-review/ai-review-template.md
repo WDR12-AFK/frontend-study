@@ -6,7 +6,10 @@
 
 ## 使用工具
 
-- ChatGPT 网页版 / Claude Code / Codex / Copilot
+- [ ] ChatGPT 网页版
+- [ ] Claude Code
+- [ ] VS Code Copilot
+- [ ] 其他：
 
 ## 本次问题
 
@@ -16,17 +19,26 @@
 
 ```html
 
+```
 
+## AI 的建议
 
-这个模板很重要。你后面每次问 AI，都不要只问完就算了，而是把关键内容记录下来。
+AI 给出的建议是：
 
-比如你问：
+## 对比与决策
 
-> 为什么我的 Flex 居中没有生效？
+| 维度 | AI 建议的内容 | 我是否采纳 | 为什么 |
+|------|--------------|-----------|--------|
+|      |              | 是 / 否   |        |
+|      |              | 是 / 否   |        |
+|      |              | 是 / 否   |        |
 
-AI 回答之后，你就记录：
+## 最终代码
 
-```text
-问题：Flex 居中没有生效  
-原因：父元素没有设置 display: flex  
-解决：给父元素添加 display: flex; justify-content: center; align-items: center;
+```html
+
+```
+
+## 这次学到什么
+
+-

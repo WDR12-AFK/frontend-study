@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex布局练习 - 导航栏</title>
+    <style>
+        /* ========== 全局重置 ========== */
+        * {
+            margin: 0;
+            /* 清除所有元素的默认外边距 */
+            padding: 0;
+            /* 清除所有元素的默认内边距 */
+            box-sizing: border-box;
+            /* 让宽高计算包含边框和内边距，布局更直观 */
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            /* 设置页面字体 */
+            background-color: #f0f0f0;
+            /* 页面背景色，浅灰色 */
+            padding: 40px;
+            /* 页面四周留出空间，让导航栏不贴边 */
+        }
+
+        /* ========== 导航栏容器 ul ========== */
+        .navbar {
+            list-style: none;
+            /* 去掉li前面的圆点符号 */
+            display: flex;
+            /* 【核心】开启Flex布局，让子元素li横向排列 */
+            justify-content: space-between;
+            /* 【核心】第一个和最后一个li贴边，中间均匀分布 */
+            align-items: center;
+            /* 垂直方向居中对齐 */
+            background-color: #2c3e50;
+            /* 导航栏整体背景色，深蓝灰色 */
+            padding: 0 30px;
+            /* 上下内边距为0，左右各30px，让内容不贴边 */
+            border-radius: 8px;
+            /* 圆角，让导航栏看起来柔和一些 */
+            height: 60px;
+            /* 导航栏高度 */
+        }
+
+        /* ========== 导航栏每一项 li ========== */
+        .navbar li {
+            background-color: #3498db;
+            /* 每个菜单项的背景色，蓝色 */
+            padding: 10px 20px;
+            /* 菜单项内部的内边距，上下10px，左右20px */
+            border-radius: 6px;
+            /* 菜单项圆角 */
+            transition: background-color 0.3s ease;
+            /* 鼠标悬停时背景色平滑过渡，0.3秒 */
+        }
+
+        /* ========== 菜单项悬停效果 ========== */
+        .navbar li:hover {
+            background-color: #e74c3c;
+            /* 鼠标悬停时背景色变为红色 */
+            cursor: pointer;
+            /* 鼠标变成小手手势，表示可点击 */
+        }
+
+        /* ========== 导航栏链接 a ========== */
+        .navbar li a {
+            text-decoration: none;
+            /* 去掉链接默认的下划线 */
+            color: #ffffff;
+            /* 链接文字颜色，白色 */
+            font-size: 16px;
+            /* 字体大小 */
+            font-weight: bold;
+            /* 字体加粗 */
+            display: block;
+            /* 让a标签变成块级元素，撑满整个li，方便点击 */
+        }
+
+        /* ========== 提示文字 ========== */
+        .tip {
+            margin-top: 20px;
+            /* 与上方导航栏的间距 */
+            color: #555;
+            /* 文字颜色，深灰色 */
+            font-size: 14px;
+            /* 字体大小 */
+            text-align: center;
+            /* 文字居中 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏：ul>li*4，每个li里面放一个a链接 -->
+    <ul class="navbar">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">设备列表</a></li>
+        <li><a href="#">巡检记录</a></li>
+        <li><a href="#">关于</a></li>
+    </ul>
+
+    <!-- 提示文字，帮助理解布局效果 -->
+    <p class="tip">
+        💡 观察：<strong>首页</strong>贴左边，<strong>关于</strong>贴右边，中间两项均匀分布 —— 这就是
+        <code>justify-content: space-between</code> 的效果。
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 四种定位演示</title>
+</head>
+<body style="margin: 0; padding: 20px; font-family: system-ui, sans-serif; min-height: 200vh; background: #fafafa;">
+
+    <!-- ========== 页面顶部填充内容 ========== -->
+    <!-- 让页面有足够高度可以滚动，以便演示 sticky 和 fixed -->
+    <div style="height: 350px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px;">
+        ⬇ 向下滚动查看 sticky 粘性定位效果 ⬇
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 演示 4：sticky 粘性定位                                         -->
+    <!-- position: sticky —— 滚动到指定位置后"粘住"，不脱离文档流           -->
+    <!-- ============================================================ -->
+    <!--
+        position: sticky;
+        → 设置为粘性定位。元素在正常文档流中，滚动到阈值时固定。
+
+        top: 0;
+        → 当元素的上边缘距离滚动容器顶部 0px 时，开始"粘住"。
+          必须指定 top/right/bottom/left 中至少一个，否则不会粘住。
+
+        z-index: 100;
+        → 确保粘住时位于其他滚动内容之上。
+
+        background: #fff3cd;
+        → 浅黄色背景，方便识别。
+
+        padding / text-align / font-weight
+        → 仅用于可读性，非定位相关。
+    -->
+    <div style="
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: #fff3cd;
+        padding: 16px 20px;
+        margin: 0 0 30px 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 16px;
+        border-bottom: 2px solid #ffc107;
+    ">
+        📌 粘性定位 (position: sticky; top: 0) —— 我粘在顶部了！
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 演示 1：relative 相对定位                                      -->
+    <!-- position: relative —— 相对于自己原本的位置偏移，不脱离文档流       -->
+    <!-- ============================================================ -->
+    <div style="margin-bottom: 8px; color: #555; font-size: 14px;">
+        ⬇ 下方蓝色块使用了 <b>relative</b> 定位，注意它偏移后下方元素并未上移
+    </div>
+
+    <!--
+        position: relative;
+        → 设置为相对定位。元素仍占据文档流中的原始空间。
+
+        left: 60px;
+        → 相对于自身原始位置向右偏移 60px。
+
+        top: 10px;
+        → 相对于自身原始位置向下偏移 10px。
+
+        background: #cfe2ff;
+        → 浅蓝色背景，方便识别。
+
+        padding / border-radius
+        → 仅用于可读性，非定位相关。
+    -->
+    <div style="
+        position: relative;
+        left: 60px;
+        top: 10px;
+        background: #cfe2ff;
+        padding: 14px 18px;
+        margin: 6px 0;
+        border-radius: 4px;
+        font-size: 15px;
+    ">
+        🔵 相对定位 (position: relative; left: 60px; top: 10px)
+        <br><small style="color: #555;">我向右偏移了60px，向下偏移了10px，但我原来的空间还在</small>
+    </div>
+
+    <!-- 紧跟在 relative 元素后面的内容，证明它没有脱离文档流 -->
+    <div style="background: #fff; padding: 10px 14px; margin: 4px 0; font-size: 14px; color: #666;">
+        ↑ 我在蓝色块"原本位置"的正下方，证明 relative 没有脱离文档流
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 演示 2：absolute 绝对定位                                      -->
+    <!-- position: absolute —— 相对于最近的定位祖先定位，脱离文档流         -->
+    <!-- ============================================================ -->
+    <div style="margin-top: 40px; margin-bottom: 8px; color: #555; font-size: 14px;">
+        ⬇ 下方灰色容器内有一个使用 <b>absolute</b> 定位的橙色块
+    </div>
+
+    <!--
+        外层容器使用 position: relative;
+        → 使其成为内部 absolute 元素的"定位祖先"。
+          如果没有这个 relative，absolute 元素会相对于 body/html 定位。
+
+        height: 180px;
+        → 给容器一个明确的高度，否则 absolute 子元素脱离文档流后容器会塌陷。
+
+        background: #e9ecef;
+        → 浅灰色背景，标识容器范围。
+    -->
+    <div style="
+        position: relative;
+        height: 180px;
+        background: #e9ecef;
+        margin: 10px 0 30px 0;
+        border-radius: 4px;
+        padding: 10px 14px;
+        font-size: 14px;
+        color: #555;
+    ">
+        这是定位祖先容器 (position: relative; height: 180px)
+
+        <!--
+            position: absolute;
+            → 设置为绝对定位。元素完全脱离文档流，不占据空间。
+
+            right: 12px;
+            → 距离定位祖先容器右边缘 12px。
+
+            bottom: 12px;
+            → 距离定位祖先容器底边缘 12px。
+
+            background: #ff8a65;
+            → 橙色背景，方便识别。
+
+            注意：这个元素脱离文档流，不占用容器空间。
+        -->
+        <div style="
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            background: #ff8a65;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #fff;
+            font-weight: bold;
+        ">
+            🟠 绝对定位 (position: absolute; right: 12px; bottom: 12px)
+            <br><small style="opacity: 0.9;">脱离文档流，相对于定位祖先的右下角</small>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 演示 3：fixed 固定定位                                         -->
+    <!-- position: fixed —— 相对于浏览器视口固定，滚动也不动，脱离文档流     -->
+    <!-- ============================================================ -->
+    <!--
+        position: fixed;
+        → 设置为固定定位。元素完全脱离文档流，相对于浏览器视口定位。
+          无论页面如何滚动，始终保持在固定位置。
+
+        right: 24px;
+        → 距离视口右边缘 24px。
+
+        bottom: 24px;
+        → 距离视口底边缘 24px。
+
+        z-index: 200;
+        → 确保始终在最上层。
+
+        background: #c8e6c9;
+        → 浅绿色背景，方便识别。
+
+        box-shadow
+        → 仅用于让其更显眼，非定位相关。
+    -->
+    <div style="
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 200;
+        background: #c8e6c9;
+        padding: 14px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    ">
+        🟢 固定定位 (position: fixed; right: 24px; bottom: 24px)
+        <br><small style="font-weight: normal; opacity: 0.8;">始终固定在视口右下角，滚动页面试试</small>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 底部填充内容，确保页面可以持续滚动                                -->
+    <!-- ============================================================ -->
+    <div style="margin-top: 30px; padding: 20px; background: #fff; border-radius: 4px; color: #aaa; font-size: 14px; line-height: 2;">
+        <p>⬆ 向上滚动页面观察各定位元素的行为：</p>
+        <p>• <b>sticky（黄色）</b>：滚动到顶部后会粘住不动，但它下方的"相对定位"区域会继续滚动从它下方穿过。</p>
+        <p>• <b>relative（蓝色）</b>：随页面正常滚动，始终偏移 60px。</p>
+        <p>• <b>absolute（橙色）</b>：随其灰色容器一起滚动。</p>
+        <p>• <b>fixed（绿色）</b>：始终固定在右下角，完全不随滚动移动。</p>
+        <br>
+        <p>继续滚动以充分观察效果……</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+        <p>—— 页面底部 ——</p>
+    </div>
+
+</body>
+</html>
